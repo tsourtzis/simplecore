@@ -1,0 +1,10 @@
+# The message of the day (motd) of the server, this appears on the server list.
+motd: "Hello, world!"
+# Announcement delay is the delay between announcement messages, in minutes.
+announcement-delay: 5
+# The list of announcement messages.
+announcements:
+  - "Did you know? If you type /help you'll learn some useful information about our server."
+  - "Did you know? Most of the features no the server are custom made by us."
+  - "Did you know? You can protect pets and entity of your liking and even share them with other players."
+  - "Did you know? Griefing is next to impossible on our server, we can roll back everything!"
