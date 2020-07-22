@@ -9,3 +9,7 @@ It also uses Project Lombok which is a java library that automatically plugs int
 Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 
 
 https://projectlombok.org/
+
+Of course it uses, Maven which is a software project management and comprehension tool. (Have a look at our pom.xml to see what dependencies we are using)
+
+https://maven.apache.org/
