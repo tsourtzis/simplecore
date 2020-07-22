@@ -1,10 +1,49 @@
 name: SimpleCore
 main: me.tsourtzis.simplecore.main.Main
 version: 0.0.1
-author: tsourtzis
 api-version: 1.16
+author: tsourtzis
 
 commands:
   heal:
     description: Restore a player's health.
     usage: /heal [player].
+  kill:
+    description: Take a player's life.
+    usage: /kill [player].
+  feed:
+    description: Restore a player's hunger.
+    usage: /feed [player].
+    aliases: sate
+  spawn:
+    description: Teleport to the spawnpoint of the current world.
+    usage: /spawn.
+    
+permissions:
+  simplecore.*:
+    description: Gives access to all SimpleCores commands.
+    children:
+      simplecore.heal.self: true
+      simplecore.heal.other: true
+      simplecore.kill.self: true
+      simplecore.kill.other: true
+      simplecore.feed.self: true
+      simplecore.feed.other: true
+  simplecore.heal.self:
+    description: Allows you to heal yourself.
+    default: op
+  simplecore.heal.other:
+    description: Allows you to heal other players.
+    default: op
+  simplecore.kill.self:
+    description: Allows you to kill yourself.
+    default: op
+  simplecore.kill.other:
+    description: Allows you to kill other players.
+    default: op
+  simplecore.feed.self:
+    description: Allows you to sate your hunger.
+    default: op
+  simplecore.feed.other:
+    description: Allows you to sate the hunger of other players.
+    default: op

@@ -8,26 +8,23 @@ import org.bukkit.entity.Player;
 
 import me.tsourtzis.simplecore.player.MyPlayer;
 
-public class HealCommandExecutor implements CommandExecutor{
+public class KillCommandExecutor implements CommandExecutor{
 
+	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if(command.getName().equalsIgnoreCase("heal")) {
+		if(command.getName().equalsIgnoreCase("kill")) {
 			if(sender instanceof Player) {
 				MyPlayer cmdSender = new MyPlayer(sender);
 				
 				if(args.length == 0) {
-					if(!(cmdSender.hasPermission("simplecore.heal.self"))) {
+					if(!(cmdSender.hasPermission("simplecore.kill.self"))) {
 						cmdSender.sendMessage(ChatColor.GRAY + "You do not have permission to perform this command.");
 					}else {
-						if(cmdSender.isHealthy()) {
-							cmdSender.sendMessage(ChatColor.GRAY + "You are already at full health.");
-						}else {
-							cmdSender.heal();
-							cmdSender.sendMessage(ChatColor.GRAY + "You have been healed.");
-						}
+						cmdSender.kill();
+						cmdSender.sendMessage(ChatColor.GRAY + "You have been killed.");
 					}
 				}else if(args.length == 1) {
-					if(!(cmdSender.hasPermission("simplecore.heal.other"))) {
+					if(!(cmdSender.hasPermission("simplecore.kill.other"))) {
 						cmdSender.sendMessage(ChatColor.GRAY + "You do not have permission to perform this command.");
 					}else {
 						MyPlayer target = new MyPlayer(args[0]);
@@ -35,14 +32,12 @@ public class HealCommandExecutor implements CommandExecutor{
 						if(!(target.exists())) {
 							cmdSender.sendMessage(ChatColor.WHITE + args[0] + ChatColor.GRAY + " is not online.");
 						}else {
-							if(target.isHealthy()) {
-								cmdSender.sendMessage(ChatColor.WHITE + target.getName() + ChatColor.GRAY + " is already at full health.");
-							}else if(!(target.isAlive())) {
-								cmdSender.sendMessage(ChatColor.WHITE + target.getName() + ChatColor.GRAY + " is already dead, thus they cannot be healed.");
+							if(!(target.isAlive())) {
+								cmdSender.sendMessage(ChatColor.WHITE + target.getName() + ChatColor.GRAY + " is already dead.");
 							}else {
-								target.heal();
-								target.sendMessage(ChatColor.GRAY + "You have been healed.");
-								cmdSender.sendMessage(ChatColor.GRAY + "You healed " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
+								target.kill();
+								target.sendMessage(ChatColor.GRAY + "You have been killed.");
+								cmdSender.sendMessage(ChatColor.GRAY + "You killed " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
 							}
 						}
 						
