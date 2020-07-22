@@ -1,5 +1,5 @@
 # SimpleCore
-SimpleCore is an all-around Minecraft Spigot plug-in that focuses on delivering a variety of useful commands to help small server administrators.
+SimpleCore is an all-around general purpose Spigot Plugin that aspires to improve the experience for small server operators and administrators. We provide a variety of in-game tools as well as a simple to use configuration. Put it into your plugins folder and let the magic begin, everything should be pre-configured optimally.
 
 It uses Spigot a high performance, no lag customized CraftBukkit Minecraft server API, and BungeeCord, the cloud server proxy. 
 
