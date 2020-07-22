@@ -70,6 +70,10 @@ public class MyPlayer {
 		player.setExhaustion(0F);
 	}
 	
+	public void smite() {
+		player.getWorld().strikeLightning(player.getLocation());
+	}
+	
 	public String getName() {
 		return player.getName();
 	}

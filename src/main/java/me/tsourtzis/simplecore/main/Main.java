@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.tsourtzis.simplecore.commandexecutors.FeedCommandExecutor;
 import me.tsourtzis.simplecore.commandexecutors.HealCommandExecutor;
 import me.tsourtzis.simplecore.commandexecutors.KillCommandExecutor;
+import me.tsourtzis.simplecore.commandexecutors.SmiteCommandExecutor;
 import me.tsourtzis.simplecore.commandexecutors.SpawnCommandExecutor;
 import me.tsourtzis.simplecore.listeners.AsyncPlayerChatListener;
 import me.tsourtzis.simplecore.listeners.ServerListPingListener;
@@ -47,11 +48,13 @@ public class Main extends JavaPlugin{
 		this.getCommand("heal").setExecutor(new HealCommandExecutor());
 		this.getCommand("kill").setExecutor(new KillCommandExecutor());
 		this.getCommand("feed").setExecutor(new FeedCommandExecutor());
+		this.getCommand("smite").setExecutor(new SmiteCommandExecutor());
 		this.getCommand("spawn").setExecutor(new SpawnCommandExecutor());
 	}
 	
 	public void setCommandAliases() {
 		this.getCommand("feed").setAliases(Arrays.asList("sate"));
+		this.getCommand("smite").setAliases(Arrays.asList("lightning"));
 	}
 	
 	public void setTabCompleters() {

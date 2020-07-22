@@ -1,6 +1,7 @@
 package me.tsourtzis.simplecore.tabcompleters;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -15,13 +16,18 @@ public class HealCommandTabCompleter implements TabCompleter{
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		if(command.getName().equalsIgnoreCase("heal")) {
 			if(args.length == 1) {
-				List<String> onlinePlayers = new ArrayList<String>();
+				List<String> tabList = new ArrayList<String>();
 				
 				for(Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-					onlinePlayers.add(onlinePlayer.getName());
+					tabList.add(onlinePlayer.getName());
 				}
 				
-				return onlinePlayers;
+				tabList.add("@all");
+				tabList.add("@all-excluding-self");
+				
+				return tabList;
+			}else if(args.length > 1) {
+				return Arrays.asList("");
 			}
 		}
 		
