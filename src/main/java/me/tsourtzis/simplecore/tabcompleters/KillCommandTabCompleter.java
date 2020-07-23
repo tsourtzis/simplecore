@@ -10,10 +10,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class HealCommandTabCompleter implements TabCompleter{
+public class KillCommandTabCompleter implements TabCompleter{
 
+	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		if(command.getName().equalsIgnoreCase("heal")) {
+		if(command.getName().equalsIgnoreCase("kill")) {
 			if(sender instanceof Player) {
 				if(args.length == 1) {
 					List<String> tabList = new ArrayList<String>();

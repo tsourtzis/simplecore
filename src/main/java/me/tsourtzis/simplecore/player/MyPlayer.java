@@ -1,27 +1,70 @@
 package me.tsourtzis.simplecore.player;
 
+import java.util.HashSet;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import me.tsourtzis.simplecore.teleport.Teleport;
+import me.tsourtzis.simplecore.teleport.TeleportState;
 
 @EqualsAndHashCode
 public class MyPlayer {
 	
+	static HashSet<UUID> tpBlock = new HashSet<UUID>();
+
 	@Getter private Player player;
 	
-	public MyPlayer(CommandSender sender) {
+	public static MyPlayer getPlayerFromCommandSender(CommandSender sender) {
 		if(sender instanceof Player) {
-			this.player = (Player) sender;
+			return new MyPlayer((Player) sender);
 		}else {
-			this.player = null;
+			return null;
 		}
 	}
 	
-	public MyPlayer(String name) {
-		this.player = Bukkit.getPlayer(name);
+	public static MyPlayer getPlayerFromString(String str) {
+		Player player = Bukkit.getPlayer(str);
+		
+		if(player == null) {
+			return null;
+		}else {
+			return new MyPlayer(player);
+		}
+	}
+	
+	public static MyPlayer getPlayerFromUUID(UUID uuid) {
+		Player player = Bukkit.getPlayer(uuid);
+		
+		if(player == null) {
+			return null;
+		}else {
+			return new MyPlayer(player);
+		}
+	}
+	
+	public MyPlayer(Player player) {
+		this.player = player;
+	}
+	
+	public String getName() {
+		return player.getName();
+	}
+	
+	public boolean hasPermission(String permission) {
+		if(player.hasPermission(permission)) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public void sendMessage(String message) {
+		player.sendMessage(message);
 	}
 	
 	public boolean isHealthy() {
@@ -32,28 +75,20 @@ public class MyPlayer {
 		return false;
 	}
 	
+	public boolean isAlive() {
+		if(player.getHealth() > 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public void heal() {
 		player.setHealth(20D);
 	}
 	
-	public boolean isAlive() {
-		if(player.getHealth() > 0D) {
-			return true;
-		}
-		
-		return false;
-	}
-	
 	public void kill() {
-		player.damage(player.getHealth());
-	}
-	
-	public boolean exists() {
-		if(player != null) {
-			return true;
-		}
-		
-		return false;
+		player.setHealth(0D);
 	}
 	
 	public boolean isSated() {
@@ -74,19 +109,35 @@ public class MyPlayer {
 		player.getWorld().strikeLightning(player.getLocation());
 	}
 	
-	public String getName() {
-		return player.getName();
+	public TeleportState teleport(MyPlayer target) {
+		Teleport tp = new Teleport(this, target);
+		
+		tp.commence();
+		
+		return tp.getState();
 	}
-
-	public boolean hasPermission(String permission) {
-		if(player.hasPermission(permission)) {
+	
+	public boolean isBlockingTeleports() {
+		if(tpBlock.contains(this.getPlayer().getUniqueId())) {
 			return true;
 		}
 		
 		return false;
 	}
 	
-	public void sendMessage(String message) {
-		player.sendMessage(message);
+	public void blockTeleports() {
+		if(isBlockingTeleports()) {
+			tpBlock.remove(this.getPlayer().getUniqueId());
+		}else {
+			tpBlock.add(this.getPlayer().getUniqueId());
+		}
+	}
+	
+	public boolean isOp() {
+		if(player.isOp()) {
+			return true;
+		}
+		
+		return false;
 	}
 }

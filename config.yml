@@ -1,1 +1,18 @@
-motd: "&fWelcome to &4Antique Survival&f, join the fun!"
+# This section allows you to modify specific server features.
+general:
+  # The message of the day (motd) that appears on the server list when your server is pinged.
+  motd: "Hello, world!"
+  # The way messages appear in chat when an non-Operator speaks, %p is the player and %m the message.
+  chat-format: "%p : %m"
+  # The way messages appear in chat when an Operator speaks, %p is the player and %m the message.
+  chat-format-op: "%p : %m"
+  # This allows you to see which IP address has pinged your server on the server list, this appears in the console.
+  log-ping-ips: false
+# This section allows you to modify specific game mechanics.
+game:
+  # This allows players to skip day like in a survival game without having all online (non-op) players go to bed.
+  survival-sleep: false
+  # This allows players to add the bed they last slept in to their home list so they can teleport back.
+  bed-home: false
+messages:
+  no-permission: "You do not have permission to perform this command." 

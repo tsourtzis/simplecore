@@ -12,20 +12,19 @@ commands:
     description: Take a player's life.
     usage: /kill [player].
   feed:
-    description: Restore a player's hunger.
+    description: Sate your hunger.
     usage: /feed [player].
-    aliases: sate
-  smite:
-    description: Strike lighting upon a player.
-    usage: /smite [player].
-    aliases: lightning
-  spawn:
-    description: Teleport to the spawnpoint of the current world.
-    usage: /spawn.
+  teleport:
+    description: Teleport to another player.
+    usage: /teleport <player> [anotherPlayer].
+    aliases: tp
+  teleportblock:
+    description: Block incoming teleports.
+    usage: /teleportblock.
     
 permissions:
   simplecore.*:
-    description: Gives access to all SimpleCores commands.
+    description: Gives access to all SimpleCore commands.
     children:
       simplecore.heal.self: true
       simplecore.heal.other: true
@@ -33,8 +32,6 @@ permissions:
       simplecore.kill.other: true
       simplecore.feed.self: true
       simplecore.feed.other: true
-      simplecore.smite.self: true
-      simplecore.smite.other: true
   simplecore.heal.self:
     description: Allows you to heal yourself.
     default: op
@@ -42,20 +39,14 @@ permissions:
     description: Allows you to heal other players.
     default: op
   simplecore.kill.self:
-    description: Allows you to kill yourself.
+    description: Allows you to take your own life.
     default: op
   simplecore.kill.other:
-    description: Allows you to kill other players.
+    description: Allows you to take the life of other players.
     default: op
   simplecore.feed.self:
-    description: Allows you to sate your hunger.
+    description: Sate your own hunger.
     default: op
   simplecore.feed.other:
-    description: Allows you to sate the hunger of other players.
-    default: op
-  simplecore.smite.self:
-    description: Allows you to smite yourself.
-    default: op
-  simplecore.smite.other:
-    description: Allows you to smite other players.
+    description: Sate another player's hunger.
     default: op
