@@ -1,0 +1,29 @@
+name: MainCommands
+main: me.jkollias.corecommands.MainCommands
+version: 1.0
+api-version: 1.13
+commands:
+   kill:
+      description: Kills the player from the game.
+      usage: /<command>
+   heal:
+      description: Restores a player's health.
+      usage: /<command>
+   difficulty:
+      description: Changes the game's difficulty.
+      usage: /<command>
+   tp:
+      description: Teleports a player to another player.
+      usage: /<command>
+   spawn:
+      description: Teleports a player to world's spawn.
+      usage: /<command>
+   feed:
+      description: Restores a player's food level.
+      usage: /<command>
+   tpToMe:
+      description: Teleports a player to your location.
+      usage: /<command>
+   gameMode:
+      description: Changes the game mode of a specified player.
+      usage: /<command>
