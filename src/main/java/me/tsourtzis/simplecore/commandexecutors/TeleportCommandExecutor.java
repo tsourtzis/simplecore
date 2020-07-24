@@ -18,10 +18,10 @@ public class TeleportCommandExecutor implements CommandExecutor{
 				MyPlayer cmdSender = MyPlayer.getPlayerFromCommandSender(sender);
 				
 				if(args.length == 0) {
-					if(!(cmdSender.hasPermission("simplecore.teleport"))) {
+					if(!(cmdSender.hasPermission("simplecore.teleport.self"))) {
 						cmdSender.sendMessage(ChatColor.GRAY + "You do not have permission to perform this command.");
 					}else {
-						cmdSender.sendMessage("Usage: " + "/teleport <player> [anotherPlayer]" + ".");
+						cmdSender.sendMessage(ChatColor.GRAY + "Usage: " + ChatColor.WHITE + "/teleport <player> [anotherPlayer]" + ChatColor.GRAY + ".");
 					}
 				}else if(args.length == 1) {
 					if(!(cmdSender.hasPermission("simplecore.teleport.self"))) {
@@ -32,17 +32,16 @@ public class TeleportCommandExecutor implements CommandExecutor{
 						TeleportState state = cmdSender.teleport(target);
 						
 						if(state == TeleportState.TARGET_BLOCKING) {
-							cmdSender.sendMessage(target.getName() + " is blocking teleports.");
+							cmdSender.sendMessage(ChatColor.WHITE + target.getName() + ChatColor.GRAY + " is blocking teleports.");
 						}else if(state == TeleportState.COMMENCED) {
-							cmdSender.sendMessage("You have been teleported to " + target.getName() + ".");
+							cmdSender.sendMessage(ChatColor.GRAY + "You have been teleported to " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
 						}else if(state == TeleportState.OP_BYPASS){
-							cmdSender.sendMessage("You have been teleported to " + target.getName() + ".");
+							cmdSender.sendMessage(ChatColor.GRAY + "You have been teleported to " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
 						}else {
-							cmdSender.sendMessage("Something went wrong.");
+							cmdSender.sendMessage(ChatColor.GRAY + "Looks like the teleportation could not commence successfully.");
 						}
 						
 						state = null;
-						
 						target = null;
 					}
 				}else {

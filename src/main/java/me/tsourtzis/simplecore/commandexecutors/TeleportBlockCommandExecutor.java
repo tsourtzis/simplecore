@@ -1,5 +1,6 @@
 package me.tsourtzis.simplecore.commandexecutors;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,15 +17,19 @@ public class TeleportBlockCommandExecutor implements CommandExecutor{
 				MyPlayer cmdSender = MyPlayer.getPlayerFromCommandSender(sender);
 				
 				if(args.length == 0) {
-					cmdSender.blockTeleports();
-					
-					if(cmdSender.isBlockingTeleports()) {
-						cmdSender.sendMessage("You are now blocking teleports.");
+					if(!(cmdSender.hasPermission("simplecore.teleportblock.self"))) {
+						cmdSender.sendMessage(ChatColor.GRAY + "You do not have permission to perform this command.");
 					}else {
-						cmdSender.sendMessage("You are no longer blocking teleports.");
+						cmdSender.blockTeleports();
+						
+						if(cmdSender.isBlockingTeleports()) {
+							cmdSender.sendMessage(ChatColor.GRAY + "You are now blocking teleports.");
+						}else {
+							cmdSender.sendMessage(ChatColor.GRAY + "You are no longer blocking teleports.");
+						}
 					}
 				}else {
-					
+					cmdSender.sendMessage(ChatColor.GRAY + "Too many command arguments.");
 				}
 				
 				cmdSender = null;

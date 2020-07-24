@@ -15,6 +15,10 @@ import me.tsourtzis.simplecore.teleport.TeleportState;
 @EqualsAndHashCode
 public class MyPlayer {
 	
+	static final int TICKS_IN_SECOND = 20;
+	static final int FIRE_SECONDS = 60;
+	
+	// Holds the player UUIDs that are blocking forced teleports, this is reset on server restart.
 	static HashSet<UUID> tpBlock = new HashSet<UUID>();
 
 	@Getter private Player player;
@@ -139,5 +143,17 @@ public class MyPlayer {
 		}
 		
 		return false;
+	}
+	
+	public boolean isIgnited() {
+		if(player.getFireTicks() > 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public void ignite() {
+		player.setFireTicks(TICKS_IN_SECOND * FIRE_SECONDS);
 	}
 }

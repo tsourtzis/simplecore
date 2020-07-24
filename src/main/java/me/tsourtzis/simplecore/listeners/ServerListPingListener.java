@@ -9,15 +9,20 @@ import me.tsourtzis.simplecore.main.Main;
 import net.md_5.bungee.api.ChatColor;
 
 public class ServerListPingListener implements Listener{
-	
-	@Getter private final Main plugin;
+
+	@Getter private Main plugin;
 	
 	public ServerListPingListener(Main plugin) {
 		this.plugin = plugin;
 	}
-
+	
 	@EventHandler
 	public void onServerListPing(ServerListPingEvent event) {
-		event.setMotd(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("motd")));
+		
+		String motd = plugin.getConfig().getString("general.motd");
+		
+		motd.replace("%", "%%");
+		
+		event.setMotd(ChatColor.translateAlternateColorCodes('&', motd));
 	}
 }

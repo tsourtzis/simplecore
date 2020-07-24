@@ -14,6 +14,12 @@ commands:
   feed:
     description: Sate your hunger.
     usage: /feed [player].
+  smite:
+    description: Strike lightning upon a player.
+    usage: /smite [player].
+  ignite:
+    description: Set a player on fire.
+    usage: /ignite [player].
   teleport:
     description: Teleport to another player.
     usage: /teleport <player> [anotherPlayer].
@@ -21,6 +27,7 @@ commands:
   teleportblock:
     description: Block incoming teleports.
     usage: /teleportblock.
+    aliases: [tpblock, tpb]
     
 permissions:
   simplecore.*:
@@ -32,6 +39,12 @@ permissions:
       simplecore.kill.other: true
       simplecore.feed.self: true
       simplecore.feed.other: true
+      simplecore.smite.self: true
+      simplecore.smite.other: true
+      simplecore.ignite.self: true
+      simplecore.ignite.other: true
+      simplecore.teleport.self: true
+      simplecore.teleportblock.self: true
   simplecore.heal.self:
     description: Allows you to heal yourself.
     default: op
@@ -45,8 +58,26 @@ permissions:
     description: Allows you to take the life of other players.
     default: op
   simplecore.feed.self:
-    description: Sate your own hunger.
+    description: Allows you to sate your own hunger.
     default: op
   simplecore.feed.other:
-    description: Sate another player's hunger.
+    description: Allows you to sate the hunger of other players.
+    default: op
+  simplecore.smite.self:
+    description: Allows you to strike lighting upon yourself.
+    default: op
+  simplecore.smite.other:
+    description: Allows you to strike lighting upon other players.
+    default: op
+  simplecore.ignite.self:
+    description: Allows you to set yourself on fire.
+    default: op
+  simplecore.ignite.other:
+    description: Allows you to set other players on fire.
+    default: op
+  simplecore.teleport.self:
+    description: Allows you to teleport yourself to other players.
+    default: op
+  simplecore.teleportblock.self:
+    description: Allows you to block incoming teleports.
     default: op
