@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -155,5 +156,38 @@ public class MyPlayer {
 	
 	public void ignite() {
 		player.setFireTicks(TICKS_IN_SECOND * FIRE_SECONDS);
+	}
+	
+	public void extinguish() {
+		player.setFireTicks(0);
+	}
+	
+	public void antidote() {
+		for(PotionEffect pEffect : player.getActivePotionEffects()) {
+			player.removePotionEffect(pEffect.getType());
+		}
+	}
+	
+	public boolean hasActivePotionEffects() {
+		if(player.getActivePotionEffects().size() > 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean isRestored() {
+		if(isHealthy() && !(hasActivePotionEffects()) && isSated() && !(isIgnited())) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public void restore() {
+		heal();
+		sate();
+		extinguish();
+		antidote();
 	}
 }

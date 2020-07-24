@@ -29,19 +29,28 @@ public class TeleportCommandExecutor implements CommandExecutor{
 					}else {
 						MyPlayer target = MyPlayer.getPlayerFromString(args[0]);
 						
-						TeleportState state = cmdSender.teleport(target);
-						
-						if(state == TeleportState.TARGET_BLOCKING) {
-							cmdSender.sendMessage(ChatColor.WHITE + target.getName() + ChatColor.GRAY + " is blocking teleports.");
-						}else if(state == TeleportState.COMMENCED) {
-							cmdSender.sendMessage(ChatColor.GRAY + "You have been teleported to " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
-						}else if(state == TeleportState.OP_BYPASS){
-							cmdSender.sendMessage(ChatColor.GRAY + "You have been teleported to " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
+						if(target == null) {
+							cmdSender.sendMessage(ChatColor.WHITE + args[0] + ChatColor.GRAY + " is not online.");
 						}else {
-							cmdSender.sendMessage(ChatColor.GRAY + "Looks like the teleportation could not commence successfully.");
+							if(cmdSender.equals(target)) {
+								cmdSender.sendMessage(ChatColor.GRAY + "You cannot teleport to yourself.");
+							}else {
+								TeleportState state = cmdSender.teleport(target);
+								
+								if(state == TeleportState.TARGET_BLOCKING) {
+									cmdSender.sendMessage(ChatColor.WHITE + target.getName() + ChatColor.GRAY + " is blocking teleports.");
+								}else if(state == TeleportState.COMMENCED) {
+									cmdSender.sendMessage(ChatColor.GRAY + "You have been teleported to " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
+								}else if(state == TeleportState.OP_BYPASS){
+									cmdSender.sendMessage(ChatColor.GRAY + "You have been teleported to " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + ".");
+								}else {
+									cmdSender.sendMessage(ChatColor.GRAY + "Looks like the teleportation could not commence successfully.");
+								}
+								
+								state = null;
+							}
 						}
 						
-						state = null;
 						target = null;
 					}
 				}else {

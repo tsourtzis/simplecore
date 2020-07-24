@@ -20,6 +20,17 @@ commands:
   ignite:
     description: Set a player on fire.
     usage: /ignite [player].
+  extinguish:
+    description: Put out a player that is on fire.
+    usage: /extinguish [player].
+    aliases: putout
+  antidote:
+    description: Remove all active potion effects from a player.
+    usage: /antidote [player].
+  restore:
+    description: Fully restore a player.
+    usage: /restore [player].
+    aliases: recover
   teleport:
     description: Teleport to another player.
     usage: /teleport <player> [anotherPlayer].
@@ -43,6 +54,12 @@ permissions:
       simplecore.smite.other: true
       simplecore.ignite.self: true
       simplecore.ignite.other: true
+      simplecore.extinguish.self: true
+      simplecore.extinguish.other: true
+      simplecore.antidote.self: true
+      simplecore.antidote.other: true
+      simplecore.restore.self: true
+      simplecore.restore.other: true
       simplecore.teleport.self: true
       simplecore.teleportblock.self: true
   simplecore.heal.self:
@@ -74,6 +91,24 @@ permissions:
     default: op
   simplecore.ignite.other:
     description: Allows you to set other players on fire.
+    default: op
+  simplecore.extinquish.self:
+    description: Allows you to extinguish yourself.
+    default: op
+  simplecore.extinquish.other:
+    description: Allows you to extinguish other players.
+    default: op
+  simplecore.antidote.self:
+    description: Allows you to extinguish yourself.
+    default: op
+  simplecore.antidote.other:
+    description: Allows you to extinguish other players.
+    default: op
+  simplecore.restore.self:
+    description: Allows you to fully restore yourself.
+    default: op
+  simplecore.restore.other:
+    description: Allows you to fully restore other players.
     default: op
   simplecore.teleport.self:
     description: Allows you to teleport yourself to other players.
