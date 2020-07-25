@@ -27,3 +27,6 @@ commands:
    gameMode:
       description: Changes the game mode of a specified player.
       usage: /<command>
+   kick: 
+      description: Kicks a player from the server.
+      usage: /<command>

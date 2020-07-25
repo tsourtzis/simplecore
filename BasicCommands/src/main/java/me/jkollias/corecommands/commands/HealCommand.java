@@ -38,7 +38,29 @@ public class HealCommand implements CommandExecutor{
 					}
 				
 				}else {
-					player.sendMessage(ChatColor.RED + "You can heal only one player at a time!");
+					
+					for(int i = 0; i < args.length; i++) {
+						Player target = Bukkit.getPlayer(args[i]);
+						
+						if(target == null) {
+							player.sendMessage(ChatColor.RED + "Player "
+									+ args[0] + "does not exist!");
+						
+						}else {
+							
+							if(target.getHealth() < 20D) {
+								target.setHealth(20D);
+								target.sendMessage(ChatColor.GOLD + "Your health has been restored!");
+								
+								player.sendMessage("You have healed player " + target.getName() + "!");
+								
+								return true;
+							
+							}else {
+								target.sendMessage(ChatColor.GOLD + "Your health is full!");
+							}
+						}
+					}
 				}
 			}
 		}

@@ -6,6 +6,7 @@ import me.jkollias.corecommands.commands.DifficultyCommand;
 import me.jkollias.corecommands.commands.FeedCommand;
 import me.jkollias.corecommands.commands.GameModeCommand;
 import me.jkollias.corecommands.commands.HealCommand;
+import me.jkollias.corecommands.commands.KickCommand;
 import me.jkollias.corecommands.commands.KillCommand;
 import me.jkollias.corecommands.commands.TeleportCommand;
 import me.jkollias.corecommands.commands.TeleportToMeCommand;
@@ -37,6 +38,7 @@ public class MainCommands extends JavaPlugin{
 		this.getCommand("feed").setExecutor(new FeedCommand());
 		this.getCommand("tptome").setExecutor(new TeleportToMeCommand());
 		this.getCommand("gamemode").setExecutor(new GameModeCommand());
+		this.getCommand("kick").setExecutor(new KickCommand());
 	
 	}
 	
@@ -48,6 +50,7 @@ public class MainCommands extends JavaPlugin{
 		this.getCommand("tp").setTabCompleter(new TabCompleterForPlayerNames());
 		this.getCommand("feed").setTabCompleter(new TabCompleterForPlayerNames());
 		this.getCommand("tptome").setTabCompleter(new TabCompleterForPlayerNames());
+		this.getCommand("kick").setTabCompleter(new TabCompleterForPlayerNames());
 	}
 	
 }

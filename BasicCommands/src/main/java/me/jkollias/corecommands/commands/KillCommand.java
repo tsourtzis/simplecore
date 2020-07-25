@@ -39,7 +39,24 @@ public class KillCommand implements CommandExecutor{
 					}
 					
 				}else {
-					player.sendMessage(ChatColor.RED + "You can kill only one player at a time!");
+					
+					for(int i = 0; i < args.length; i++) {
+						
+						Player target = Bukkit.getPlayer(args[i]);
+						
+						if(target == null) {
+							player.sendMessage(ChatColor.RED + "Player " + args[i]
+									+ " does not exist!");
+							
+						}else {
+							target.setHealth(0D);
+							target.sendMessage(ChatColor.AQUA + "You have been killed by " + player.getName() + "!");
+							player.sendMessage("You have killed player " + target.getName() + "!");
+							
+							return true;
+						}
+					}
+					
 				}
 			}
 		}

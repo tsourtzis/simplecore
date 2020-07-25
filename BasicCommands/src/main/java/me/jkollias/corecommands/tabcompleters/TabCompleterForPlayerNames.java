@@ -17,7 +17,8 @@ public class TabCompleterForPlayerNames implements TabCompleter {
 				|| cmd.getName().equalsIgnoreCase("heal")
 				|| cmd.getName().equalsIgnoreCase("feed")
 				|| cmd.getName().equalsIgnoreCase("tp")
-				|| cmd.getName().equalsIgnoreCase("tpToMe")) {
+				|| cmd.getName().equalsIgnoreCase("tpToMe")
+				|| cmd.getName().equalsIgnoreCase("kick")) {
 			
 			List<String> nameList = new ArrayList<String>();
 			
