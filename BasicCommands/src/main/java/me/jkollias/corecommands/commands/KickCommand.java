@@ -9,6 +9,9 @@ import org.bukkit.entity.Player;
 
 public class KickCommand implements CommandExecutor{
 
+	/*
+	 * A command that kicks a player from the server.
+	 */
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
 		if(label.equalsIgnoreCase("kick")) {

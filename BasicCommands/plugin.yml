@@ -30,3 +30,18 @@ commands:
    kick: 
       description: Kicks a player from the server.
       usage: /<command>
+   op:
+      description: Makes a player a server operator.
+      usage: /<command>
+   removeOp:
+      description: Remove operator attribute from a player.
+      usage: /<command>
+   time: 
+      description: Changes the time of day.
+      usage: /<command>
+   giveItem:
+      description: Gives an amount of a specified item to a specified player.
+      usage: /<command>
+   take:
+      description: Removes an item from a player's inventory.
+      usage: /<command>

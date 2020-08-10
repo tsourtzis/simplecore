@@ -10,6 +10,9 @@ import org.bukkit.command.TabCompleter;
 
 public class DifficultyCommandTabCompleter implements TabCompleter{
 
+	/*
+	 * Returns a list of all the difficulties in the first argument position.
+	 */
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
 		
 		if(cmd.getName().equalsIgnoreCase("difficulty")) {

@@ -10,6 +10,9 @@ import net.md_5.bungee.api.ChatColor;
 
 public class HealCommand implements CommandExecutor{
 
+	/*
+	 * A command that restores the health of a specified online player.
+	 */
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
 		if(label.equalsIgnoreCase("heal")) {

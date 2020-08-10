@@ -10,6 +10,9 @@ import org.bukkit.command.TabCompleter;
 
 public class GameModeCommandTabCompleter implements TabCompleter{
 
+	/*
+	 * Returns a list of all the game modes in the first argument position.
+	 */
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
 		
 		if(cmd.getName().equalsIgnoreCase("gameMode")) {

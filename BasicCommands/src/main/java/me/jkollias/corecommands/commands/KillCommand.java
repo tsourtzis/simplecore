@@ -10,6 +10,9 @@ import net.md_5.bungee.api.ChatColor;
 
 public class KillCommand implements CommandExecutor{
 
+	/*
+	 * A command that kills a specified online player.
+	 */
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
 		if(label.equalsIgnoreCase("kill")) {

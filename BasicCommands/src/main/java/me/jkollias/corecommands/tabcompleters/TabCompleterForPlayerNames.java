@@ -11,6 +11,9 @@ import org.bukkit.entity.Player;
 
 public class TabCompleterForPlayerNames implements TabCompleter {
 
+	/*
+	 * Returns a list of all online player names in the first argument postion.
+	 */
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
 		
 		if(cmd.getName().equalsIgnoreCase("kill")
